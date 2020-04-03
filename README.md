@@ -24,10 +24,10 @@ docker run -it -p 80:80 -p 443:443 ft_server
 ```
 
 ###  Utils
-Some links that helped me to study for the projects:
+Some links that helped me to study for the project:
 
 [SSL Certificate](https://www.humankode.com/ssl/create-a-selfsigned-certificate-for-nginx-in-5-minutes);   
 [LEMP stack](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mariadb-php-lemp-stack-on-debian-10);  
 [Docker](https://www.youtube.com/playlist?list=PLhW3qG5bs-L99pQsZ74f-LC-tOEsBp2rK) - Playlist;  
 [phpmyadmin](https://www.digitalocean.com/community/tutorials/how-to-install-phpmyadmin-from-source-debian-10);  
-[Install WordPress](https://www.osradar.com/install-wordpress-debian-10/)
+[Install WordPress](https://www.osradar.com/install-wordpress-debian-10/).
