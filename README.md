@@ -14,10 +14,19 @@ git clone https://github.com/msoares-prog/ft_server.git
 ```
 
 ### Using the Project
+To build a docker image:
+```
+docker build -t ft_server .
+```
+```Run``` image:
+```
+docker run -it -p 80:80 -p 443:443 ft_server
+```
 
-### References
-
-[Localhost.conf](https://www.humankode.com/ssl/create-a-selfsigned-certificate-for-nginx-in-5-minutes)  
-[Linux Diretory](https://www.howtogeek.com/117435/htg-explains-the-linux-directory-structure-explained/)  
-[HTTP 301](https://en.wikipedia.org/wiki/HTTP_301)  
-[Docker](https://www.youtube.com/playlist?list=PLhW3qG5bs-L99pQsZ74f-LC-tOEsBp2rK) - Playlist
+###  Utils
+Some links that helped me to study for the projects:
+[SSL Certificate](https://www.humankode.com/ssl/create-a-selfsigned-certificate-for-nginx-in-5-minutes);   
+[LEMP stack](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mariadb-php-lemp-stack-on-debian-10);  
+[Docker](https://www.youtube.com/playlist?list=PLhW3qG5bs-L99pQsZ74f-LC-tOEsBp2rK) - Playlist;  
+[phpmyadmin](https://www.digitalocean.com/community/tutorials/how-to-install-phpmyadmin-from-source-debian-10);  
+[Install WordPress](https://www.osradar.com/install-wordpress-debian-10/)
