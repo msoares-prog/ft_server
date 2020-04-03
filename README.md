@@ -18,7 +18,7 @@ To build a docker image:
 ```
 docker build -t ft_server .
 ```
-```Run``` image:
+Run image:
 ```
 docker run -it -p 80:80 -p 443:443 ft_server
 ```
