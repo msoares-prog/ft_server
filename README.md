@@ -22,6 +22,16 @@ Run image:
 ```
 docker run -it -p 80:80 -p 443:443 ft_server
 ```
+Browser:
+```
+https://localhost
+```
+```
+https://localhost/wordpress
+```
+```
+https://localhost/phpmyadmin
+```
 
 ###  Utils
 Some links that helped me to study for the project:
@@ -31,3 +41,5 @@ Some links that helped me to study for the project:
 [Docker](https://www.youtube.com/playlist?list=PLhW3qG5bs-L99pQsZ74f-LC-tOEsBp2rK) - Playlist;  
 [phpmyadmin](https://www.digitalocean.com/community/tutorials/how-to-install-phpmyadmin-from-source-debian-10);  
 [Install WordPress](https://www.osradar.com/install-wordpress-debian-10/).
+
+### Contributors
