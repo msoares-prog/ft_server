@@ -13,10 +13,10 @@ RUN	apt-get -y update && \
 
 #copy
 COPY	./srcs/container_init.sh ./
-COPY 	./srcs/localhost.conf /etc/nginx/sites-available/localhost
+COPY 	./srcs/localhost.conf /etc/nginx/sites-available/localhost.conf
 COPY	./srcs/phpmyadmin.inc.php ./tmp/phpmyadmin.inc.php
 COPY	./srcs/wp-config.php ./tmp/wp-config.php
 
 CMD bash container_init.sh
 
-EXPOSE 80 443
+EXPOSE 80 443 3306
