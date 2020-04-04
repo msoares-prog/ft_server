@@ -25,12 +25,14 @@ docker run -it -p 80:80 -p 443:443 ft_server
 Browser:
 ```
 https://localhost
-```
-```
+
 https://localhost/wordpress
-```
-```
+
 https://localhost/phpmyadmin
+```
+Delete image:
+```
+docker rm $(docker ps -a | grep ft_server | cut -d ' ' -f 1)
 ```
 
 ###  Utils
