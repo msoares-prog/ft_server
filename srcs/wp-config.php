@@ -39,15 +39,23 @@ define('DB_COLLATE', '');
 * usuários a fazerem login novamente.
 *
 * @since 2.6.0
-*/
-define('AUTH_KEY',         'coloque a sua frase única aqui');
-define('SECURE_AUTH_KEY',  'coloque a sua frase única aqui');
-define('LOGGED_IN_KEY',    'coloque a sua frase única aqui');
-define('NONCE_KEY',        'coloque a sua frase única aqui');
-define('AUTH_SALT',        'coloque a sua frase única aqui');
-define('SECURE_AUTH_SALT', 'coloque a sua frase única aqui');
-define('LOGGED_IN_SALT',   'coloque a sua frase única aqui');
-define('NONCE_SALT',       'coloque a sua frase única aqui');
+ */
+define('AUTH_KEY',         'nk|n 4}r7Wqb~iffoCwLEM6:>qULMC*LL4BuyVnTyErRI`GyZ~[4LTZhLexlWb0D');
+define('SECURE_AUTH_KEY',  '4BJ&;thP9[m[3W;r<=+|8u1]K4ZL+GLHH-gw2^2*V|XKFpWjlb^t$;o`hc5YRmA]');
+define('LOGGED_IN_KEY',    '5zVxy1 ?rl]tB9Yv-HEOpUZ&CG|Oa-[ P_dQ=|&}&4CSoD#.YB=c*fPg5aUQO}Pt');
+define('NONCE_KEY',        ' Q>)N8% +k^<qWIp; G81S%-R!p2t8EhMz+l{Q#.ZeA#/6^VWTF nDdMh0M%cswr');
+define('AUTH_SALT',        '`:B-F3D@R|!n E4%q[%&$<&uZkUYSx,t~L*0*`:&iUb7?6`+#YchT(`AV$K2pWCw');
+define('SECURE_AUTH_SALT', ']bN5CDHe3- m+46g7Y^TtdEHze# TyoiYd2.WvGe^IVK-W!Ej7z{YM}^/mxB3D4z');
+define('LOGGED_IN_SALT',   'Tv(8Pis;=W.:-AhhT.w=[:&auD$s/z]J#}k9EX%&S(- ~S){.^{0 oqsJZ}W0UQy');
+define('NONCE_SALT',       'ryAxi/p<<}rvlDSr5&)W9^A9q*:5JvPTD$DptM%x$M[]?s_$s58|s3T//}o~_i0B');
+//define('AUTH_KEY',         'coloque a sua frase única aqui');
+//define('SECURE_AUTH_KEY',  'coloque a sua frase única aqui');
+//define('LOGGED_IN_KEY',    'coloque a sua frase única aqui');
+//define('NONCE_KEY',        'coloque a sua frase única aqui');
+//define('AUTH_SALT',        'coloque a sua frase única aqui');
+//define('SECURE_AUTH_SALT', 'coloque a sua frase única aqui');
+//define('LOGGED_IN_SALT',   'coloque a sua frase única aqui');
+//define('NONCE_SALT',       'coloque a sua frase única aqui');
 /**#@-*/
 /**
 * Prefixo da tabela do banco de dados do WordPress.
