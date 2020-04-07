@@ -4,8 +4,8 @@ chown -R $USER:$USER /var/www/*
 chmod -R 755 /var/www/*
 
 # Generate folder
-mkdir -p /var/www/html && touch /var/www/html/index.php
-echo "<?php phpinfo(); ?>" >> /var/www/html/index.php
+mkdir -p /var/www/localhost && touch /var/www/localhost/index.php
+echo "<?php phpinfo(); ?>" >> /var/www/localhost/index.php
 
 #SSL
 mkdir /etc/ssl/certs
@@ -21,8 +21,8 @@ rm -rf /etc/nginx/sites-enabled/default
 
 #Config wpress
 wget https://wordpress.org/latest.tar.gz
-tar -xvzf latest.tar.gz --strip-components 1 -C /var/www/html/
-mv ./tmp/wp-config.php /var/www/html/wordpress
+tar -xvzf latest.tar.gz --strip-components 1 -C /var/www/localhost/
+mv ./srcs/wp-config.php /var/www/localhost/
 
 # setup dp
 
@@ -32,10 +32,10 @@ echo "FLUSH PRIVILEGES;" | mysql -u root
 echo "update mysql.user set plugin = 'mysql_native_password' where user='root';" | mysql -u root
 
 # Config PHP
-mkdir /var/www/html/phpmyadmin
+mkdir /var/www/localhost/phpmyadmin
 wget https://files.phpmyadmin.net/phpMyAdmin/5.0.2/phpMyAdmin-5.0.2-all-languages.tar.gz
-tar -xvf phpMyAdmin-5.0.2-all-languages.tar.gz --strip-components 1 -C /var/www/html/phpmyadmin
-mv ./tmp/phpmyadmin.inc.php /var/www/html/phpmyadmin
+tar -xvf phpMyAdmin-5.0.2-all-languages.tar.gz --strip-components 1 -C /var/www/localhost/phpmyadmin
+mv ./tmp/phpmyadmin.inc.php /var/www/localhost/phpmyadmin
 
 service php7.3-fpm start
 service nginx start
