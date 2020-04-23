@@ -39,7 +39,7 @@ Delete image:
 docker rm $(docker ps -a | grep ft_server | cut -d ' ' -f 1)
 ```
 
-###  Utils
+### Utils
 Some links that helped me to study for the project:
 
 * [SSL Certificate](https://www.humankode.com/ssl/create-a-selfsigned-certificate-for-nginx-in-5-minutes);   
