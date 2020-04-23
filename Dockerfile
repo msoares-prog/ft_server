@@ -1,24 +1,58 @@
 FROM debian:buster
 
-# install
+LABEL	version="1.0.0" \
+	maintainer="Caio Vinicius"	
 
-RUN	apt-get -y update && \
-	apt-get -y upgrade && \
-	apt-get -y install wget && \
-	apt-get -y install apt-utils && \
-	apt-get -y install nginx && \
-	apt-get -y install curl && \
-	apt-get -y install php7.3-fpm php7.3-common php7.3-mysql php7.3-gmp php7.3-curl php7.3-intl php7.3-mbstring php7.3-xmlrpc php7.3-gd php7.3-xml php7.3-cli php7.3-zip php7.3-soap php7.3-imap && \	
-	apt-get install -y mariadb-server mariadb-client && \
-	apt-get install -y default-mysql-server
+#install necessary things
+RUN ["apt-get", "update", "-y"]
+RUN ["apt-get", "upgrade", "-y"]
+#install nginx
+RUN ["apt-get", "install", "nginx", "-y"]
+#install mariadb-server
+RUN ["apt-get", "install", "mariadb-server", "-y"]
+#install php modules
+RUN ["apt-get", "install", "php-fpm", "php-mysql", "php-mbstring", "php-zip", "php-gd", "-y"]
+#remove packages already installed
+RUN ["apt-get", "clean"]
 
-#copy
-COPY 	./srcs/nginx.conf ./tmp
-COPY	./srcs/phpmyadmin.inc.php ./tmp/
-COPY	./srcs/wp-config.php ./tmp/
-COPY	./srcs/container_init.sh ./
+ARG NGINXPATH=/srcs/nginx
+ARG MARIADBPATH=/srcs/mariadb
+ARG PMAPATH=/srcs/phpmyadmin
+ARG WPPATH=/srcs/wordpress
 
-CMD ["nginx", "-g", "daemon off;"]
-CMD bash ./container_init.sh
+#copying key and certificate to configure ssl on nginx
+COPY ["$NGINXPATH/ssl/nginx-selfsigned.crt", "/etc/ssl/certs/"]
+COPY ["$NGINXPATH/ssl/nginx-selfsigned.key", "/etc/ssl/private/"]
 
-EXPOSE 80 443 3306
+#setup nginx
+ENV AUTOINDEX off
+RUN ["rm", "-f", "/etc/nginx/sites-enabled/default"]
+RUN ["rm", "-f", "/etc/nginx/sites-available/default"]
+RUN ["rm", "-rf", "/var/www/html"]
+COPY ["$NGINXPATH/sites-available/index.html", "/var/www/"]
+COPY ["$NGINXPATH/sites-available/autoindex.sh", "/etc/nginx/sites-available/"]
+COPY ["$NGINXPATH/sites-available/ft_server", "/etc/nginx/sites-available/"]
+RUN ["ln", "-s", "/etc/nginx/sites-available/ft_server", "/etc/nginx/sites-enabled/"]
+
+#setup phpMyAdmin
+ADD ["$PMAPATH/pma495.tar.gz", "/"]
+RUN ["mv", "phpMyAdmin-4.9.5-english/", "/var/www/phpmyadmin"]
+RUN ["mkdir", "-p", "/var/lib/phpmyadmin/tmp"]
+RUN ["chmod", "777", "/var/lib/phpmyadmin/tmp"]
+COPY ["$PMAPATH/config.inc.php", "/var/www/phpmyadmin/"]
+
+#setup mariadb
+COPY ["$MARIADBPATH/dbconfig.sh", "/"]
+
+#setup wordpress
+ADD ["$WPPATH/wplatest.tar.gz", "/"]
+RUN ["mv", "wordpress/", "/var/www/"]
+COPY ["$WPPATH/wp-config.php", "/var/www/wordpress/"]
+
+#this container will be exposed on 80 and 443 port
+EXPOSE 80/tcp 443/tcp
+
+#copy script to execute things
+COPY ["srcs/init.sh", "/"]
+#execute sh to start nginx, mariadb and php
+ENTRYPOINT ["sh", "init.sh"]
