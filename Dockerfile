@@ -1,8 +1,5 @@
 FROM debian:buster
 
-LABEL	version="1.0.0" \
-	maintainer="Caio Vinicius"	
-
 #install necessary things
 RUN ["apt-get", "update", "-y"]
 RUN ["apt-get", "upgrade", "-y"]
