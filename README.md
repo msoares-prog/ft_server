@@ -30,6 +30,10 @@ https://localhost/wordpress
 
 https://localhost/phpmyadmin
 ```
+Nginx index ON or OFF:
+```
+docker exec $(docker ps | grep ft_server | cut -d ' ' -f 1) bash switch_autoindex.sh
+```
 Delete image:
 ```
 docker rm $(docker ps -a | grep ft_server | cut -d ' ' -f 1)
